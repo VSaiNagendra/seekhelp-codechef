@@ -1,0 +1,84 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>I Don't Know</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+      .rect{
+        width:300px;
+        height:300px;
+        float:left;
+        position:relative;
+		
+      }
+      .circle{
+        width:45%;
+        height:45%;
+        
+		background-image:url("2018-09-09_12-17-41.png");
+		background-size:cover;
+        border-radius:60%;
+        left:30%;
+        top:3%;
+        position:absolute;
+        border: 5px solid #ffffff;
+      }
+      .rect h7{
+        font-family:sans-serif;
+        font-weight:bold;
+        text-align:center;
+        top:50%;
+        left:20%;
+        position:absolute;      
+      }
+      .rect p{
+        font-family:league-gothic;
+        top:60%;
+        left:4%;
+        right:4%;
+        text-align:center;
+        position:absolute;
+      }
+      .a1{
+        width:100%;
+        height:85%;
+        background-color:black;
+  	    background-image: -webkit-linear-gradient(150deg, #000000 55%, #2F4F4F 45%);
+		}
+	  .b{
+	  height:30%:
+	  width:100%;
+	  position:absolute;
+    overflow:hidden;
+    margin-top:-10%;
+	  }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="{% static 'home.js' %}"></script>
+  </head>
+  <body>
+  <div class="a1"></div>
+  <br></br>
+  <div class="b" style="left:15%;">
+    <div class="rect">
+      <div class="circle" ></div>
+      <h7>ENCOURAGING CODING</h7>
+      <p>Our primary aim at the whatever is to help people start and keep coding</p>
+      </div>
+    <div class="rect">
+      <div class="circle" > 
+      </div>
+      <h7 style="left:32%;">LEARN CODING</h7>
+      <p>Our primary aim at the whatever is to help people start and keep coding</p>
+    </div>
+  <div class="rect">
+      <div class="circle"> 
+      </div>
+      <h7 style="left:32%;">IMPROVE CODING</h7>
+      <p>Our primary aim at the whatever is to help people start and keep coding</p>
+    </div>
+	</div>
+  </body>
+</html>

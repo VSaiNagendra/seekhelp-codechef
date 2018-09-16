@@ -1,0 +1,312 @@
+<html>
+<head>
+<title>sdfsa</title>
+<style>
+#flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+	height:100%;
+    margin: 0 auto;
+}
+
+.flex-item1 {
+    width: 20%;
+    height: 100%;
+	background-color:white;
+}
+.flex-item2 {
+    width: 80%;
+    height: 100%;
+    padding-left:0%;
+    background: #123;
+}
+{
+  box-sizing: border-box;
+}
+
+body {
+  font: 300 100% 'Helvetica Neue', Helvetica, Arial;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+ul li {
+  display: inline;
+  text-align: center;
+}
+
+a1 {
+  width: 25%;
+  padding: .75rem 0;
+  margin: 0;
+  text-decoration: none;
+  color: #333;
+}
+.name{
+	width:100%;
+	height:10%;
+}
+body {
+  font-family: Arial, sans-serif;
+  }
+
+h1 {
+  text-align: center;
+  font-family: Tahoma, Arial, sans-serif;
+  color: #06D85F;
+  margin: 80px 0;
+}
+
+.box {
+  width: 100%;
+  height:10%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.button1 {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button1:hover {
+  background: #06D85F;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 80%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 80%;
+  }
+  .popup{
+    width: 80%;
+  }
+}
+.requests{
+	width:100%;
+	height:20%;
+	background-color:red;
+	
+}
+/*dark background to support form theme*/
+body{
+  background:url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_wall.png);
+}
+
+/*sass variables used*/
+$full:100%;
+$auto:0 auto;
+$align:center;
+
+@mixin disable{
+  outline:none;
+  border:none;
+}
+
+@mixin easeme{
+  -webkit-transition:1s ease;
+  -moz-transition:1s ease;
+  -o-transition:1s ease;
+  -ms-transition:1s ease;
+  transition:1s ease;
+}
+
+/*site container*/
+.wrapper{
+  width:80%;
+  height:80%;
+  margin:$auto;
+}
+
+h1{
+  text-align:$align;
+  padding:30px 0px 0px 0px;
+  font:25px Oswald;
+  color:#FFF;
+  text-transform:uppercase;
+  text-shadow:#000 0px 1px 5px;
+  margin:0px;
+}
+
+p{
+  font:13px Open Sans;
+  color:#6E6E6E;
+  text-shadow:#000 0px 1px 5px;
+  margin-bottom:30px;
+}
+
+.form{
+  width:$full;
+}
+
+input[type="Name"],input[type="ProblemName"],input[type="Language"],input[type="Question"],input[type="Description"],input[type="CodeSnapshot"]{
+  width:98%;
+  padding:15px 0px 15px 8px;
+  border-radius:5px;
+  box-shadow:inset 4px 6px 10px -4px rgba(0,0,0,0.3), 0 1px 1px -1px rgba(255,255,255,0.3);
+	background:rgba(0,0,0,0.2);
+  @include disable;
+  border:1px solid rgba(0,0,0,1);
+  margin-bottom:10px;
+  color:#6E6E6E;
+}
+
+input[type="submit"]{
+  width:100%;
+  padding:15px;
+  border-radius:5px;
+  @include disable;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28D2DE), to(#1A878F));
+  background-image: -webkit-linear-gradient(#28D2DE 0%, #1A878F 100%);
+  background-image: -moz-linear-gradient(#28D2DE 0%, #1A878F 100%);
+  background-image: -o-linear-gradient(#28D2DE 0%, #1A878F 100%);
+  background-image: linear-gradient(#28D2DE 0%, #1A878F 100%);
+  font:14px Oswald;
+  color:#FFF;
+  text-transform:uppercase;
+  text-shadow:#000 0px 1px 5px;
+  border:1px solid #000;
+  opacity:0.7;
+	-webkit-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.7);
+  -moz-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.7);
+	box-shadow: 0 8px 6px -6px rgba(0,0,0,0.7);
+  border-top:1px solid rgba(255,255,255,0.8)!important;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255,255,255,0.2)));
+}
+
+input:focus{
+  box-shadow:inset 4px 6px 10px -4px rgba(0,0,0,0.7), 0 1px 1px -1px rgba(255,255,255,0.3);
+  background:rgba(0,0,0,0.3);
+  @include easeme;
+}
+
+input[type="submit"]:hover{
+  opacity:1;
+  cursor:pointer;
+}
+
+.Name-help,.ProblemName-help,.Description-help,.CodeSnapshot-help,.Language-help,.Question-help{
+  display:none;
+  padding:0px;
+  margin:0px 0px 15px 0px;
+}
+
+.optimize{
+  position:fixed;
+  right:3%;
+  top:0px;
+}
+</style>
+<body>
+
+<div id="flex-container">
+        <div class="flex-item1">
+		<div class="logo"></div>
+		<span>HEY</span>
+		<div class="container">
+		<div class="box">
+		<a class="button1" href="#popup1">Let me Pop up</a>
+		</div>
+		<div id="popup1" class="overlay">
+		<div class="popup">
+		<h2>Here i am</h2>
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<div class="wrapper">
+  <form class="form" method="post" action="http://149.129.138.34/home/submit_request/">
+  {% csrf_token %} 
+	<input type="text" class="ProblemName" name="problemcode" placeholder="ProblemName">
+    <div>
+      <p class="ProblemName-help" >Please enter the problem name.</p>
+    </div>
+	<input type="text" class="Language" name="languageused" placeholder="Language">
+    <div>
+      <p class="Language-help">Please enter the language.</p>
+    </div>
+	<input type="text" class="Question" name="question" placeholder="Question">
+    <div>
+      <p class="Question-help">Please enter the question.</p>
+    </div>
+	<input type="text" class="Description" name="description" placeholder="Description">
+    <div>
+      <p class="Description-help">Please enter the description of your problem.</p>
+    </div>
+    <input type="text" class="CodeSnapshot" name="snapshot" placeholder="CodeSnapshot">
+    <div>
+      <p class="CodeSnapshot-help">Please enter the code snapshot.</p>
+    </div>
+    <input type="submit" class="submit" value="Submit">
+  </form>
+</div>
+<p class="optimize">
+  Optimized for Chrome & Firefox!
+</p>
+		</div>
+		</div>
+		</div>
+		<div class="box"><a class="button1" href="#">Requests</a></div>
+		<div class="box"><a class="button1" href="#">Reply</a></div>
+		</div>
+
+		</div>
+        <div class="flex-item2">
+		<div class="name" style="background-color:green;"><h></h></div>
+		<div class="requests"></div>
+		</div>
+</body>
+</html>
