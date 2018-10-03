@@ -1,0 +1,66 @@
+{% load staticfiles %}
+<html lang="en">
+   <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="shortcut icon" href="http://www.iconj.com/ico/y/c/yc4bvym8pz.ico" type="image/x-icon" />
+    <title>c div</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'home.css' %}" rel="stylesheet">
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+     
+    		window.onload=function(){        
+               
+               
+        $('#errorModal').modal({backdrop:'static', keyboard:false});
+        
+             $('#errorModal').modal('show');
+    };
+    function redirect() {
+               window.location="http://149.129.138.34/home";
+             }
+    </script>
+<style>
+    @media screen and (max-width: 320px)
+      {
+        .b2{
+          height: 1000px;
+        }
+        .b1h2{
+          font-size: 14px;
+          left: 150px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+  	<div id="errorModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+    <!-- Modal content-->
+         <div class="modal-content">
+               <div class="modal-header">
+               
+                    <h4 class="modal-title">{{ heading }}</h4>
+              </div>
+      <div class="modal-body">
+        <p>{{ message }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="redirect()"data-dismiss="modal">Gotcha</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+  </body>

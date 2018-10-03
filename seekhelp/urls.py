@@ -23,6 +23,11 @@ urlpatterns = [
     path('index/',views.index_view,name='index'),
     path('home/',views.home_view,name='home'),
     path('login/',views.login_view,name='login'),
+    path('homerequests/',views.request_view,name='requests'),
+    path('homesuggestions/',views.suggestions_view,name="suggestions"),
     path('logout/',views.logout,name='logout'),
-    path('home/submit_request/',views.submit_request,name='submit_request')
+    path('home/submit_request/',views.submit_request,name='submit_request'),
+    path('home/reply_to_request/',views.reply_to_request,name="reply_to_request"),
+    path('home/update_question/',views.update_question,name="update_question"),
+    path('homegraph/',views.graph_view,name='graph')
 ]

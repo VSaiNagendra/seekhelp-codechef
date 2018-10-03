@@ -9,19 +9,22 @@ class SendRequest(models.Model):
 	description=models.TextField()
 	codesnapshot=models.TextField()
 	status=models.BooleanField(default=False)
-	date=models.DateField(auto_now_add=True)
-	time=models.TimeField(auto_now_add=True)
+	date=models.DateField(auto_now=True)
+	time=models.TimeField(auto_now=True)
+
 class ReceiveRequest(models.Model):
-	rrid=models.IntegerField(SendRequest)
+	rrid=models.ForeignKey(SendRequest,on_delete=models.CASCADE)
 	funame=models.CharField(max_length=50)
-	tname=models.CharField(max_length=50)
+	tuname=models.CharField(max_length=50)
+	
+
 class ReplyRequest(models.Model):
-	rerid=models.IntegerField(SendRequest)
+	rerid=models.ForeignKey(SendRequest,on_delete=models.CASCADE)
 	funame=models.CharField(max_length=50)
 	tuname=models.CharField(max_length=50)
 	suggestion=models.TextField()
-	retime=models.TimeField(auto_now_add=True)
-	date=models.TimeField(auto_now_add=True)
+	retime=models.DateField(auto_now=True)
+	redate=models.TimeField(auto_now=True)
 
 
 	

@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8g^=70%z=og=a0da9i8%@%2o1wfz-9t5@3k=kha&bk&3gt5qg+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['149.129.138.34']
 
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'seekhelp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite1'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

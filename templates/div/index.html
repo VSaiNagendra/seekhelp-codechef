@@ -1,84 +1,992 @@
-{% load staticfiles %}
+
 <html>
-  <head>
-    <title>I Don't Know</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <style>
-      .rect{
-        width:300px;
-        height:300px;
-        float:left;
-        position:relative;
-		
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" href="http://www.iconj.com/ico/y/c/yc4bvym8pz.ico" type="image/x-icon" />
+<title>C&ltdiv&gt</title>
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300|Roboto+Slab:400,700,300);
+
+@keyframes fadeout{
+  0%     {opacity: 1;}
+  90%    {opacity: 0;}
+  100%   {opacity: 0;
+          display: none;}
+}
+
+@-webkit-keyframes fadeout{
+  0%     {opacity: 1;}
+  90%    {opacity: 0;}
+  100%   {opacity: 0;
+          display: none;}
+}
+
+@keyframes fadein{
+  0%     {opacity: 0;}
+  100%   {opacity: 100;}
+}
+
+@-webkit-keyframes fadein{
+  0%     {opacity: 0;}
+  100%   {opacity: 100;}
+}
+
+@keyframes fadeinout{
+  0%     {opacity: 0;}
+  1%     {opacity: 0;}
+  50%    {opacity: 100;}
+  99%    {opacity: 0;}
+  100%   {opacity: 0;
+          display: none;}
+}
+
+@-webkit-keyframes fadeinout{
+  0%     {opacity: 0;}
+  1%     {opacity: 0;}
+  50%    {opacity: 100;}
+  99%    {opacity: 0;}
+  100%   {opacity: 0;
+          display: block;}
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body{
+  background: rgb(34,34,34);
+  width: 100%;
+  font: 400 16px Source Sans Pro;
+  color: rgb(204,204,204);
+}
+
+.flexwrap{
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+}
+
+.b1{
+  height: 90%;
+  width: 100%;
+  background: rgb(254,230,18);
+  position: relative;
+  overflow: hidden;
+}
+
+.b1txtbx{
+  color: rgb(5,5,5);
+  font-family: Roboto Slab;
+  font-size:20px;
+  margin-left: -300px;
+}
+
+.b1txtbx.active{
+  animation: fadeout 0.6s ease 0s 1 forwards;
+  -webkit-animation: fadeout 0.6s ease 0s 1 forwards;
+}
+
+
+.b1h1{
+  font-size: 100px;
+  letter-spacing: -2px;
+}
+.b1h2{
+  font-size: 33px;
+  line-height: 1.1;
+  text-align:left;
+  margin-top:20%;
+  margin-left:380px;
+  width:1000px;
+  }
+
+.b1tx{
+  font-family: Source Sans Pro;
+  font-weight: 600;
+  font-size: 30px;
+  margin-top: 30px;
+  opacity: 0;
+  animation: fadein 0.5s ease 1s 1 forwards;
+  -webkit-animation: fadein 0.5s ease 1s 1 forwards;
+  margin-top:20%;
+  margin-left:20px;
+}
+.b1ex{
+  border-bottom: dotted 1px rgb(5,5,5);
+  cursor: pointer;
+  transition: background 0.3s ease, border-bottom 0.3s ease, color 0.3s ease;
+}
+
+.b1ex:hover{
+  background: rgb(5,5,5);
+  color: rgb(254,230,18);
+  border-bottom: dotted 1px rgb(254,230,18);
+  cursor: pointer;
+  transition: background 0.3s ease, border-bottom 0.3s ease, color 0.3s ease;
+}
+.b2{
+  height: 70%;
+  background: rgb(34,34,34);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.b2con{
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.b2textcon{
+  position: relative;
+  padding: 0px 80px;
+  max-width: 80%;
+  align-self: center;
+}
+
+.b2head{
+  font: 500 30px Roboto Slab;
+  color: rgb(254,230,18);
+  margin-bottom: 10px;
+}
+
+.b2text{
+  text-indent: 15px;
+  font: 600 16px Source Sans Pro;
+  text-shadow: -1px -1px 1px rbga(5,5,5,0.3);
+  line-height: 1.4;
+}
+
+.b2flexwrap{
+  position: relative;
+  width: 200px;
+  height: 200px;
+  align-self: center;
+}
+
+.b2circon{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  background: rgb(254,230,18);
+  height: 160px;
+  width: 200px;
+}
+
+.photocon{
+  position: absolute;
+  overflow: hidden;
+  height: 160px;
+  width: 200px;
+}
+
+.b2topphoto{
+  height: 100px;
+  width: 100%;
+  background: url("https://image.ibb.co/kGAxPK/a.png") no-repeat center top;
+  position: absolute;
+  top: 40px;
+  transition: top 1.5s ease;
+  -webkit-transition: top 1.5s ease;
+}
+
+.b2backphoto{
+  height: 262px;
+  width: 100%;
+  background: url("https://image.ibb.co/kGAxPK/a.png") no-repeat center top;
+  position: absolute;
+  top: 40px;
+  transition: top 1.5s ease;
+  -webkit-transition: top 1.5s ease;
+}
+
+.b2con:hover .b2topphoto{
+  top: 0px;
+  -webkit-transition: top 1.5s ease;
+  transition: top 1.5s ease;
+}
+
+.b2con:hover .b2backphoto{
+  top: 0px;
+  -webkit-transition: top 1.5s ease;
+  transition: top 1.5s ease;
+}
+
+.b2circon:hover .b2topphoto{
+  top: -60px;
+  -webkit-transition: top 1.5s ease;
+  transition: top 1.5s ease;
+}
+
+.b2circon:hover .b2backphoto{
+  top: -60px;
+  -webkit-transition: top 1.5s ease;
+  transition: top 1.5s ease;
+}
+
+.b3{
+  min-height: 800px;
+  background: url(https://i.imgur.com/CjMq4Pb.png) no-repeat center;
+  background-size: cover;
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  
+}
+
+.b3head{
+  text-align: center;
+  margin: 80px 0px 80px 0px;
+  width: 100%;
+}
+
+.b3headtext{
+  font: 500 50px Roboto Slab;
+  color: rgb(254,230,18);
+}
+  
+.b3boxes{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.b3box{
+  width: 250px;
+  background: rgb(34,34,34);
+  border-radius: 3px;
+  box-shadow: 0px 5px 10px rgba(254,230,18,0.02),   0px 5px 10px rgba(5,5,5,0.8);
+  margin: 0px 50px;
+}
+
+.b3icarea{
+  height: 200px;
+  width: 250px;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.b3ic{
+  font-size: 100px;
+  align-self: center;
+}
+
+.b3boxtext{
+  padding: 0px 20px;
+  text-align: center;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 1.5s ease;
+}
+
+.b3boxtext2{
+  padding: 0px 20px;
+  text-align: center;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 1.5s ease;
+  margin-bottom:10px;
+}
+
+.b3boxtit{
+  font: 700 18px Roboto Slab;
+  color: rgb(254,230,18);
+}
+
+.b3boxtit2{
+  font: 700 18px Roboto Slab;
+  color: rgb(254,230,18);
+  padding-top: 15px;
+}
+
+.b3boxdis{
+  Font: 600 14px Source Sans Pro;
+  text-shadow: -1px -1px 1px rgba(5,5,5,0.3);
+  padding-top: 6px;
+}
+
+.b3boxarrow{
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  color: rgb(254,230,18);
+  padding: 10px 0px;
+  transition: opacity 0.5s ease;
+}
+
+.b3:hover .b3boxtext{
+  max-height: 500px;
+  transition: max-height 1.5s ease;
+}
+
+.b3box:hover .b3boxtext2{
+  max-height: 500px;
+  transition: max-height 1.5s ease;
+}
+
+.b3box:hover .b3boxarrow{
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.b3rocketflame{
+  height: 30px;
+  width: 10px;
+  background: linear-gradient(to bottom, rgba(255,197,50,1) 0%,rgba(254,230,18,0.75) 25%,rgba(254,230,18,0) 100%);
+  position: absolute;
+  top: 58.5%;
+  left: 36%;
+  -webkit-transform: rotate(45deg) scale(1,1);
+  transform: rotate(45deg) scale(1,1);
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  -webkit-animation: rocketflame 1s linear 0s infinite;
+  animation: rocketflame 1s linear 0s infinite;
+}
+
+@-webkit-keyframes rocketflame {
+  0%    {height: 30px;}
+  20%   {height: 33px; top: 59%;}
+  30%   {height: 28px;}
+  40%   {height: 31px;}
+  100%  {height: 30px;}
+}
+
+@keyframes rocketflame {
+  0%    {height: 30px;}
+  20%   {height: 33px; top: 59%;}
+  30%   {height: 28px;}
+  40%   {height: 31px;}
+  100%  {height: 30px;}
+}
+
+.b3rocketfarts{
+  display: block;
+  width: 20px;
+  height: 80px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 25%;
+  top: 58%;
+  position: absolute;
+}
+
+.rocketfart{
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  background: rgb(204,204,204);
+  border-radius: 50%;
+  left: 25%;
+  -webkit-transform: scale(.1,.1);
+  transform: scale(.1,.1);
+  position: absolute;
+}
+
+.rfl{
+  -webkit-animation: fartleft 0.5s linear 0s infinite;
+  animation: fartleft 0.5s linear 0s infinite;
+}
+
+.rfr{
+  -webkit-animation: fartright 0.5s linear 0.3s infinite;
+  animation: fartright 0.5s linear 0.3s infinite;
+}
+
+.rfs{
+  -webkit-animation: fartreg 0.3s linear 0.6s infinite;
+  animation: fartreg 0.3s linear 0.6s infinite;
+}
+
+@-webkit-keyframes fartleft{
+  0% {-webkit-transform: scale(.1,.1) 
+        translateY(0%) 
+        translateX(0%);
+        opacity: 1;}
+  50% {-webkit-transform: scale(.5,.5) 
+        translateY(200%) 
+        translateX(0%);
+        opacity: 0.8;}
+  100%  {-webkit-transform: scale(1,1) 
+        translateY(400%) 
+        translateX(-100%);
+        opacity: 0;}
+}
+
+@keyframes fartleft{
+  0% {transform: scale(.1,.1) 
+        translateY(0%) 
+        translateX(0%);
+        opacity: 1;}
+  50% {transform: scale(.5,.5) 
+        translateY(200%) 
+        translateX(0%);
+        opacity: 0.8;}
+  100%  {transform: scale(1,1) 
+        translateY(400%) 
+        translateX(-100%);
+        opacity: 0;}
+}
+
+@-webkit-keyframes fartright{
+  0% {-webkit-transform: scale(.1,.1) 
+        translateY(0%) 
+        translateX(0%);
+        opacity: 1;}
+  50% {-webkit-transform: scale(.5,.5) 
+        translateY(200%) 
+        translateX(0%);
+        opacity: 0.8;}
+  100%  {-webkit-transform: scale(1,1) 
+        translateY(400%) 
+        translateX(100%);
+        opacity: 0;}
+}
+
+@keyframes fartright{
+  0% {transform: scale(.1,.1) 
+        translateY(0%) 
+        translateX(0%);
+        opacity: 1;}
+  50% {transform: scale(.5,.5) 
+        translateY(200%) 
+        translateX(0%);
+        opacity: 0.8;}
+  100%  {transform: scale(1,1) 
+        translateY(400%) 
+        translateX(100%);
+        opacity: 0;}
+}
+
+@keyframes fartreg{
+  0% {transform: scale(.1,.1) 
+        translateY(0%) 
+        translateX(0%);
+        opacity: 1;}
+  100%  {transform: scale(1.3,1.3) 
+        translateY(400%) 
+        translateX(0%);
+        opacity: 0;}
+}
+
+@-webkit-keyframes fartreg{
+  0% {-webkit-transform: scale(.1,.1) 
+        translateY(0%) 
+        translateX(0%);
+        opacity: 1;}
+  100%  {-webkit-transform: scale(1.3,1.3) 
+        translateY(400%) 
+        translateX(0%);
+        opacity: 0;}
+}
+
+.beakerbubble{
+  position: absolute;
+  left: 50%;
+  top: 67.5%;
+  height: 5px;
+  width: 5px;
+  background: rgb(254,230,18);
+  border-radius: 50%;
+}
+
+.bb1{
+  -webkit-animation: bbup 1.3s ease 0s infinite;
+  animation: bbup 1.3s ease 0s infinite;
+}
+
+.bb2{
+  -webkit-animation: bbup 1.3s ease 0.3s infinite;
+  animation: bbup 1.3s ease 0.3s infinite;
+}
+
+.bb3{
+  -webkit-animation: bbup 1.3s ease 0.8s infinite;
+  animation: bbup 1.3s ease 0.8s infinite;
+}
+
+.bb4{
+ -webkit-animation: bbup 1.3s ease 0.6s infinite;
+  animation: bbup 1.3s ease 0.6s infinite;
+}
+
+.bb5{
+  -webkit-animation: bbup 1.3s ease 0.4s infinite;
+  animation: bbup 1.3s ease 0.4s infinite;
+}
+
+@-webkit-keyframes bbup {
+  0% {opacity: 0;
+      -webkit-transform: scale(0,0);
+      top: 67.5%;
       }
-      .circle{
-        width:45%;
-        height:45%;
+  70% {opacity: 1;
+      -webkit-transform: scale(1,1);
+      top: 67.5%;
+     }
+ 95% {opacity: 1;
+      -webkit-transform: scale(1.2,1.2);
+      top: 60.5%;
+     }
+ 100% {opacity: 0;
+      -webkit-transform: scale(1.4,1.4);
+      top: 58.5%;
+     }
+}
+
+@keyframes bbup {
+  0% {opacity: 0;
+      transform: scale(0,0);
+      top: 67.5%;
+      }
+  70% {opacity: 1;
+      transform: scale(1,1);
+      top: 67.5%;
+     }
+ 95% {opacity: 1;
+      -webkit-transform: scale(1.2,1.2);
+      top: 60.5%;
+     }
+ 100% {opacity: 0;
+      transform: scale(1.4,1.4);
+      top: 58.5%;
+     }
+}
+
+
+.b7{
+  height: 600px;
+  background: rgb(34,34,34);
+  position: relative;
+  transition: all 2s ease; 
+}
+
+.b7box{
+  background: rgb(34,34,34);
+  padding: 60px;
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+}
+
+.b7head{
+  color: rgb(242,230,18);
+  padding-bottom: 20px;
+  font: 500 80px Roboto Slab;
+  text-align: center;
+}
+
+.b7sub{
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: -1px -1px 1px rgba(0,0,0,0.3);
+  max-height: 0px;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 1s ease, max-height 2s ease; 
+}
+
+.b7:hover .b7sub{
+  opacity: 1;
+  max-height: 300px;
+  transition: opacity 1s ease, max-height 2s ease; 
+}
+
+.surprise{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: url("https://image.ibb.co/cJXYye/c.png") no-repeat center;
+  background-size: cover;
+  opacity: 0;
+  transition: all 2s ease;
+}
+
+.b7:hover .surprise{
+  opacity: 1;
+  transition: all 2s ease; 
+}
+@media screen and (max-width: 1024px)
+    {
+    .b1{
+  height: 60%;
+  width: 100%;
+}
+
+.b1txtbx{
+  color: rgb(5,5,5);
+  font-family: Roboto Slab;
+  margin-left: 14px;
+}
+
+.b1h1{
+ width:100%;
+}
+
+.b1h2{
+  font-size: 23px;
+  line-height: 1.1;
+}
+
+.b1tx{
+  font-family: Source Sans Pro;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 30px;
+  opacity: 0;
+  margin-top:20%;
+  width:90%;
+}
+
+.b1ex{
+  border-bottom: dotted 1px rgb(5,5,5);
+  cursor: pointer;
+}
+
+.b1ex:hover{
+  background: rgb(5,5,5);
+  color: rgb(254,230,18);
+  border-bottom: dotted 1px rgb(254,230,18);
+  cursor: pointer;
+  transition: background 0.3s ease, border-bottom 0.3s ease, color 0.3s ease;
+}
+  .b2{
+  margin-top:30px;
+  height: 600px;
+  background: rgb(34,34,34);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.b2textcon{
+  position: relative;
+  padding: 0px 80px;
+  max-width: 95%;
+  align-self: center;
+}
+
+.b2head{
+  font: 500 30px Roboto Slab;
+  color: rgb(254,230,18);
+  margin-bottom: 10px;
+}
+
+.b2text{
+  text-indent: 15px;
+  font: 600 16px Source Sans Pro;
+  text-shadow: -1px -1px 1px rbga(5,5,5,0.3);
+  line-height: 1.4;
+}
+
+
+.b3{
+background-color: grey;
+
+}
+    .b2flexwrap{
+    display:none;
+    }
+    .b3boxarrow{
+    display:none;
+    }
+.b3box{
+margin:20px 30px;
+margin-left:10px;
+}
+.b3boxtext{
+max-height:500px;
+}
+.b3boxtext2{
+max-height:500px;
+}
+.surprise{
+opacity:1;
+}
+.b7head{
+font-size:40px;
+}
+.b7sub{
+opacity:1;
+}
+.b7 hover{
+display:none;}
+}
+@media screen and (max-width: 770px)
+{
+.b3boxes{
+flex-direction:column;
+margin-top:-20px;
+align-items:center;
+}
+.b3headtext{
+font-size:40px;
+}
+.b1tx{
+font-size:15px;
+}
+}
+@media screen and (max-width: 320px)
+{
+  .b2{
+    height: 1000px;
+  }
+  .b1h2{
+    font-size: 14px;
+    left: 150px;
+  }
+}
+
+
+  </style>
+
+</head>
+<body>
+  <div class="flexwrap">
+  
+<div class="b1">
+  
+  <div class="center b1txtbx">
+    <img src="https://image.ibb.co/dUkWjK/title1.png" class="b1h1"/>
+        <div class="center b1h2" id="text" >
+  <script>
+ window.onload = function() {
+  typeWriter();
+};
+    var i = 0;
+    var j=0;
+     var txt1 = 'Let\'s code together';
+     var txt2='No more brain storming';
+     var txt3='When in doubt, ask it out';
+      var speed = 50;
+    var interval;
+    var first=0;
+  function stop(){
+    var speed=20;
+  if (i >=0) 
+    {
+       
+      if(i==0)
+      {   document.getElementById("text").innerHTML ="";
+        setTimeout(typeWriter, speed);
+      }
+      else{
+      
+      document.getElementById("text").innerHTML = document.getElementById("text").innerHTML.substr(0,i-1)+"|";
+       i--;
+       setTimeout(stop,speed)
+      }
         
-		background-image:url("2018-09-09_12-17-41.png");
-		background-size:cover;
-        border-radius:60%;
-        left:30%;
-        top:3%;
-        position:absolute;
-        border: 5px solid #ffffff;
+    }
+  
+    
+  }
+  function typeWriter() {
+  if(j===0){
+      if (i < txt3.length) {
+        if(i==0)
+        {
+          document.getElementById("text").innerHTML=txt3.charAt(0)+'|';
+
+        }
+    else{ document.getElementById("text").innerHTML =document.getElementById("text").innerHTML.substr(0,i)+ txt3.charAt(i)+"|";}
+    i++;
+       if(i==txt3.length) {
+            j=(j+1)%3; 
+                      
+            setTimeout(stop,2000);
+            }
+    else{
+        setTimeout(typeWriter, speed);
       }
-      .rect h7{
-        font-family:sans-serif;
-        font-weight:bold;
-        text-align:center;
-        top:50%;
-        left:20%;
-        position:absolute;      
+    }
+  }
+  else if(j===1){
+      if (i < txt1.length) {
+        if(i==0)
+        {
+          document.getElementById("text").innerHTML=txt1.charAt(0)+'|';
+
+        }
+    else{ document.getElementById("text").innerHTML =document.getElementById("text").innerHTML.substr(0,i)+ txt1.charAt(i)+"|";}
+    i++;
+       if(i==txt1.length) {
+            j=(j+1)%3; 
+                      
+            setTimeout(stop,2000);
+            }
+    else{
+        setTimeout(typeWriter, speed);
       }
-      .rect p{
-        font-family:league-gothic;
-        top:60%;
-        left:4%;
-        right:4%;
-        text-align:center;
-        position:absolute;
+    }
+  }
+  else
+  {
+    if (i < txt2.length) 
+    {
+      if(i==0)
+      {
+        document.getElementById("text").innerHTML=txt2.charAt(0)+'|';
+
       }
-      .a1{
-        width:100%;
-        height:85%;
-        background-color:black;
-  	    background-image: -webkit-linear-gradient(150deg, #000000 55%, #2F4F4F 45%);
-		}
-	  .b{
-	  height:30%:
-	  width:100%;
-	  position:absolute;
-    overflow:hidden;
-    margin-top:-10%;
-	  }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  <script src="{% static 'home.js' %}"></script>
-  </head>
-  <body>
-  <div class="a1"></div>
-  <br></br>
-  <div class="b" style="left:15%;">
-    <div class="rect">
-      <div class="circle" ></div>
-      <h7>ENCOURAGING CODING</h7>
-      <p>Our primary aim at the whatever is to help people start and keep coding</p>
+      else{
+      document.getElementById("text").innerHTML = document.getElementById("text").innerHTML.substr(0,i)+ txt2.charAt(i)+"|";
+      }
+         i++;
+      if(i==txt2.length) {
+      j=(j+1)%3;
+      setTimeout(stop,2000);
+      }
+      else{
+      setTimeout(typeWriter, speed);
+      }
+    }
+  }
+    
+      
+      }
+  
+</script>
+</div>
+
+    <p class="b1tx">("Let's go.<a href="https://api.codechef.com/oauth/authorize?response_type=code&client_id=a420ca7d74ada05e8b29411205403ca4&redirect_uri=http://149.129.138.34/&state=xyz">Ready</a>?")</p>
+  </div>
+</div>
+
+<div class="b2">
+  
+  <div class="b2con">
+    
+  <div class="b2flexwrap">
+  <div class="b2circon"> 
+      <div class="photocon">
+        <div class="b2backphoto"></div>
       </div>
-    <div class="rect">
-      <div class="circle" > 
+      <div class="b2topphoto"></div>
+  </div>
+  </div> 
+    
+   <div class="b2textcon">
+      <h2 class="b2head">What do we do?</h2>
+      <p class="b2text">We here at C&ltdiv&gt provide a peer to peer platform. 
+    Getting stuck at a problem is frustrating, neither can you move forward without solving it, nor can you stop solving it before you complete it. 
+    We at C&ltdiv&gt are here to provide a solution by providing a platform for you talk to other coders who have solved these questions before 
+    hand. You could also request for answers in the same language that you are coding in, making it even easier for you to understand the solution to any problem that you are stuck on.</div>
+  </div>
+</div>
+  
+<div class="b3">
+  
+  <div class="b3head">
+    <h2 class="b3headtext">What do you get?</h2>
+  </div>
+  
+  <div class="b3boxes">
+    
+    <div class="b3box">
+        <div class="b3icarea">
+          <i class="fa fa-cog fa-spin b3ic"></i>
+        </div>
+      
+      <div class="b3boxtext">
+        <h4 class="b3boxtit">Starter</h4>
+        <p class="b3boxdis">
+    One way to stay motivated while coding is to JUST CODE.
+    You will get stuck and need help (this is where we come in) from time to time but we assure you, it really does get better with practice.</p>
       </div>
-      <h7 style="left:32%;">LEARN CODING</h7>
-      <p>Our primary aim at the whatever is to help people start and keep coding</p>
+      
+      <div class="b3boxtext2">
+        <h4 class="b3boxtit2">How do we do it?</h4>
+        <p class="b3boxdis">By guiding you through the problems that you are facing and by giving you relevant answers to help you get through them.</p>
+      </div>
+      
+        <div class="b3boxarrow"><i class="fa fa-angle-down"></i></div>
     </div>
-  <div class="rect">
-      <div class="circle"> 
+    
+        <div class="b3box">
+        <div class="b3icarea">
+          <i class="fa fa-flask b3ic"></i>
+          <div class="beakerbubble bb1"></div>
+          <div style="left:43%;" class="beakerbubble bb2"></div>
+          <div style="left:46%;" class="beakerbubble bb3"></div>
+          <div style="left:48%;" class="beakerbubble bb4"></div>
+          <div style="left:54%;" class="beakerbubble bb5"></div>
+        </div>
+      
+      <div class="b3boxtext">
+        <h4 class="b3boxtit">Developer</h4>
+        <p class="b3boxdis">This is the stage when you’ve started asking for solutions to a problem that you are stuck on.</p>
       </div>
-      <h7 style="left:32%;">IMPROVE CODING</h7>
-      <p>Our primary aim at the whatever is to help people start and keep coding</p>
+      
+      <div class="b3boxtext2">
+        <h4 class="b3boxtit2">How can you learn it?</h4>
+        <p class="b3boxdis">Through your senior level coders or through your peers who have managed to solve those pesky questions before.</p>
+      </div>
+      
+        <div class="b3boxarrow"><i class="fa fa-angle-down"></i></div>
     </div>
-	</div>
-  </body>
+    
+        <div class="b3box">
+        <div class="b3icarea">
+          <i class="fa fa-rocket b3ic transfix"></i>
+          <div class="b3rocketflame"></div>
+          <div class="b3rocketfarts">
+            <div class="rocketfart rfl"></div>
+            <div class="rocketfart rfr"></div>
+            <div class="rocketfart rfs"></div>
+          </div>
+          
+        </div>
+      
+      <div class="b3boxtext">
+        <h4 class="b3boxtit">Pro</h4>
+        <p class="b3boxdis">Now, in this stage you have been there done that. It your chance now to help your fellow peers who are struggling to get through their problems.</p>
+      </div>
+      
+      <div class="b3boxtext2">
+        <h4 class="b3boxtit2">How do you get there?</h4>
+        <p class="b3boxdis">Trying over and over  again until you have a nervous breakdown and ask someone for help.</p>
+      </div>
+      
+        <div class="b3boxarrow"><i class="fa fa-angle-down"></i></div>
+    </div>
+  </div>
+</div>
+  
+<div class="b7">
+  <div class="surprise"></div>
+<div class="b7box">
+    <h1 class="b7head">
+    Any doubts? Contact us.
+    </h1>
+    <div class="b7sub">
+  cdivhelp@gmail.com
+    </div>
+  </div>
+</div>
+</body>
 </html>

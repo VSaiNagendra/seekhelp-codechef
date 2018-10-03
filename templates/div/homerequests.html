@@ -1,0 +1,345 @@
+{% load staticfiles %}
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="shortcut icon" href="http://www.iconj.com/ico/y/c/yc4bvym8pz.ico" type="image/x-icon" />
+    <title>c div</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'home.css' %}" rel="stylesheet">
+    <style>
+    @media screen and (max-width: 320px)
+      {
+        .b2{
+          height: 1000px;
+        }
+        .b1h2{
+          font-size: 14px;
+          left: 150px;
+        }
+      }
+    </style>
+ 
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Hii {{ uname }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="http://149.129.138.34/home">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="modal" data-target="#graphform" href="#">Compare</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://149.129.138.34/logout/">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <center>
+          <h3 class="mt-4">Requests Received</h3>
+          </hr>
+          </center>
+          <hr>
+          <!-- Author -->
+        {% ifnotequal requests.count 0 %}
+          {% for r in requests %}
+          <!-- Date/Time -->
+          <p><strong>{{ forloop.counter }})</strong>Request on {{ r.rrid.date }}  at {{ r.rrid.time }}(GMT) </br> &nbsp language specific :{{ r.rrid.languageused}} </br> &nbsp from <a href="javascript:void(0);" onclick="compare('{{r.funame}}')";>{{ r.funame }}</a></br>
+          &nbsp Problem code<a href="https://www.codechef.com/problems/{{ r.rrid.problemcode}}"><strong>: {{ r.rrid.problemcode}}</strong></a>
+          </p>
+          <style>
+       #reply{{forloop.counter}} {
+            display:none;
+         }
+         </style>
+          <!-- Post Content -->
+          <strong>Question:-</strong>
+          <p class="lead">{{r.rrid.question}}</p>
+          <strong>Description:-</strong>
+          <p>{{r.rrid.description}}</p>
+          <strong>Code Written:</strong>
+          <blockquote class="blockquote">
+          <div style="background-color: #efcca2; border: 3px solid #ccc;">
+            <p class="mb-0"><pre>{{ r.rrid.codesnapshot }}</pre></p>
+            </div>
+          </blockquote>
+          </br>
+          <button type="button" name="none" onclick="toggle('reply{{forloop.counter}}')" class="btn btn-primary" >
+                                          Click to Reply</button>
+          </br>
+          <hr>
+          <!-- Comments Form -->
+      
+          <div class="card my-4" id="reply{{forloop.counter}}">
+            <h5 class="card-header">Enter here to give suggestion for {{ r.funame }} on Problem : {{r.rrid.problemcode}}</h5>
+            <div class="card-body">
+              <form method="POST" action="http://149.129.138.34/home/reply_to_request/">
+              {% csrf_token %}
+              <input style="border: 0px solid; "  type="hidden" name="problemcode" value="{{r.rrid.problemcode}}" readonly>
+              <input style="border: 0px solid; "  type="hidden" name="tuname" value="{{r.funame}}" readonly>
+              </br>
+                <div class="form-group">
+                  <textarea style="overflow-y: scroll;" class="form-control" rows="3" name="suggestion" required></textarea></br>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+         
+ 
+
+          <!-- Single Comment -->
+           </div>
+        {% endfor %}
+        {% else %}
+            <strong>Question asked:0</br></strong>
+            <p class="lead">Click on Ask Questions to clear doubt if any</p>
+        {% endifnotequal %}
+        </div>
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+          <!-- Search Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Search</h5>
+            <div class="card-body">
+      <center>
+                <div class="btn-group-vertical">
+            <button type="button" class="btn btn-primary" name="yourproblem" onclick="Redirect1()">Your Problems</button>
+            </br>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#questionform" >Ask Question</button></br>
+            <button type="button" class="btn btn-primary" name="suggestionsreceived" onclick="Redirect2()">Suggestions Received</button>
+            </br>
+            
+            <button type="button" class="btn btn-primary" name="requestreceived" onclick="Redirect3()">Request Received</button>
+
+         </div>
+        </center>
+            </div>
+          </div>
+          <!--graphs  -->
+<div id="graphform" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Enter UserName to compare</h4>
+                  </div>
+                  <div class="modal-body">
+            <form class="needs-validation" method="POST" action="http://149.129.138.34/homegraph/" novalidate>
+                    {% csrf_token %}
+                        <div class="form-column">
+                          <div class="col-md-12 mb-6">
+                            <label for="validation">Username</label>
+                            <input class="form-control"  id="validation" placeholder="Username" name="username" required></input>
+                            <div class="invalid-feedback">
+                              Please enter username
+                            </div>
+                          </div>
+                        </div>
+                          </br>
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+              </form>
+                        </div>
+                  <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                </div>
+
+              </div>
+</div>
+<!--questiosn form-->
+          <div id="questionform" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Ask Question</h4>
+                  </div>
+                  <div class="modal-body">
+            <form class="needs-validation" method="POST" action="http://149.129.138.34/home/submit_request/" novalidate>
+                    {% csrf_token %}
+                        <div class="form-column">
+                          <div class="form-group col-md-6 mb-3">
+                              <label for="validationCustom0">Language</label>
+                              <select id="validationCustom0" class="form-control" name="languageused">
+                                <option selected>c</option>
+                                <option selected>c++</option>
+                                <option selected>java</option>
+                                <option selected>python2.7</option>
+                                <option>python3</option>
+                              </select>
+                          </div>
+                          <div class="col-md-6 mb-3">
+                            <label for="validationCustom1">Problem Code</label>
+                            <input type="text" class="form-control" id="validationCustom1" placeholder="Code XYZ" name="problemcode" required>
+                            <div class="invalid-feedback">
+                              Please provide a valid problem code
+                            </div>
+                          </div>
+                          <div class="col-md-12 mb-6">
+                            <label for="validationCustom2">Question</label>
+                            <textarea class="form-control" rows="3" id="validationCustom2" placeholder="Why ?" name="question" required></textarea>
+                            <div class="invalid-feedback">
+                              Please write your question
+                            </div>
+                          </div>
+                          <div class="col-md-12 mb-6">
+                            <label for="validationCustom3">Description</label>
+                            <textarea class="form-control" rows="4" id="validationCustom3" placeholder="How ?" name="description" required></textarea>
+                            <div class="invalid-feedback">
+                              Please write description
+                            </div>
+                          </div>
+                          <div class="col-md-12 mb-6">
+                            <label for="validationCustom4">Code snapshot</label>
+                            <textarea style="overflow-y: scroll;"class="form-control" rows="5" id="validationCustom4" placeholder="Enter your few lines of code where this error occurs" name="codesnapshot" required></textarea>
+                            <div class="invalid-feedback">
+                              Please paste your code 
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                              Please tick 
+                            </label>
+                            <div class="invalid-feedback">
+                              Enter fields
+                            </div>
+                          </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                      </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4 md-8">
+            <h5 class="card-header">Statistics</h5>
+            <div class="card-body">
+      <span>
+              No of questions asked &nbsp &nbsp &nbsp &nbsp : {{questions.count}}
+        </br>
+        No of suggestions received : {{suggestionsreceived.count}}
+        </br>
+        No of suggestions given &nbsp &nbsp &nbsp: {{suggestionsgiven.count}}
+        </br>
+        No of requests received &nbsp &nbsp &nbsp : {{requests.count}}
+            </div>
+      </span>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; C DIV 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script type="text/javascript">
+     
+            function Redirect1() {
+               window.location="http://149.129.138.34/home";
+             }
+            function Redirect2(){
+               window.location="http://149.129.138.34/homesuggestions";
+             }
+            function Redirect3(){
+               window.location="http://149.129.138.34/homerequests";
+             }
+             (function() {
+                'use strict';
+                
+                window.addEventListener('load', function() {
+                  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                  var forms = document.getElementsByClassName('needs-validation');
+                  // Loop over them and prevent submission
+                  var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                      if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                      }
+
+
+                      form.classList.add('was-validated');
+                    }, false);
+                  });
+                }, false);
+              })();
+             function toggle(param1)
+             {
+              param=document.getElementById(param1);
+                    if (this.name === "none1") {
+                      param.style.display = "none";
+                    this.name="none";
+                        
+                    } 
+                    else {
+                        param.style.display = "block";
+                      this.name="none1";
+                    }
+             }
+             function compare(touser){
+                 $('#graphform').modal('show');
+                 document.getElementById("validation").value=touser;
+
+             }
+          
+      </script>
+
+  </body>
+
+</html>
