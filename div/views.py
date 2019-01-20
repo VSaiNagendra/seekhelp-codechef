@@ -1,4 +1,4 @@
-from django.shortcuts import render,render_to_response
+from django.shortcuts import render
 from django.http import HttpResponseRedirect,HttpResponse
 import urllib,json
 from urllib.request import urlopen,Request
@@ -9,7 +9,7 @@ def index_view(request):
 def logout(request):
 	del request.session['token']
 	del request.session['uname']
-	return HttpResponseRedirect('http://149.129.138.34/index')
+	return HttpResponseRedirect('http://34.80.215.108/index')
 def suggestions_view(request):
 	try:
 		questions=SendRequest.objects.filter(uname=request.session['uname']).order_by('-rid')
@@ -24,7 +24,7 @@ def suggestions_view(request):
 		'suggestionsgiven':suggestionsgiven,
 		}
 	except Exception as err:
-		return HttpResponseRedirect("http://149.129.138.34/index")
+		return HttpResponseRedirect("http://34.80.215.108/index")
 	return render(request,'div/homesuggestions.html',values)
 
 def request_view(request):
@@ -42,7 +42,7 @@ def request_view(request):
 			'suggestionsgiven':suggestionsgiven
 			}
 		else:
-			return HttpResponseRedirect("http://149.129.138.34/index")
+			return HttpResponseRedirect("http://34.80.215.108/index")
 	return render(request,'div/homerequests.html',values)
 def home_view(request):
 	token=''
@@ -50,12 +50,12 @@ def home_view(request):
 	if request.method=='GET':
 		if not request.session.has_key('uname'):			
 			name=request.GET.get('code')
-			post_data = [("grant_type","authorization_code"),("code",name),("client_id","a420ca7d74ada05e8b29411205403ca4"),("client_secret","ab9b1e3c02b7bb2f98080f26372b16f6"),("redirect_uri","http://149.129.138.34/")]     # a sequence of two element tuples
+			post_data = [("grant_type","authorization_code"),("code",name),("client_id","a420ca7d74ada05e8b29411205403ca4"),("client_secret","ab9b1e3c02b7bb2f98080f26372b16f6"),("redirect_uri","http://34.80.215.108/")]     # a sequence of two element tuples
 			result=''
 			try:
 				result = urlopen('https://api.codechef.com/oauth/token', urllib.parse.urlencode(post_data).encode("utf-8"))
 			except urllib.error.HTTPError as err:
-				return HttpResponseRedirect("http://149.129.138.34/index")
+				return HttpResponseRedirect("http://34.80.215.108/index")
 			content = json.loads(result.read().decode('utf-8'))
 			token=content['result']['data']['access_token']
 			req = Request('https://api.codechef.com/users/me')
@@ -86,8 +86,8 @@ def home_view(request):
 def login_view(request):
 	if request.session.has_key('uname'):
 		if request.session.has_key('token'):
-			return HttpResponseRedirect("http://149.129.138.34/home")
-	return HttpResponseRedirect("https://api.codechef.com/oauth/authorize?response_type=code&client_id=a420ca7d74ada05e8b29411205403ca4&redirect_uri=http://149.129.138.34/&state=xyz")
+			return HttpResponseRedirect("http://34.80.215.108/home")
+	return HttpResponseRedirect("https://api.codechef.com/oauth/authorize?response_type=code&client_id=a420ca7d74ada05e8b29411205403ca4&redirect_uri=http://34.80.215.108/&state=xyz")
 def submit_request(request):
 	if request.method=="POST":
 		data=request.POST.copy()
@@ -173,7 +173,7 @@ def reply_to_request(request):
 		form.funame=request.session['uname']
 		form.suggestion=data['suggestion']
 		form.save()
-		return HttpResponseRedirect("http://149.129.138.34/home")
+		return HttpResponseRedirect("http://34.80.215.108/home")
 	else:
 		return HttpResponse('Page Not Found 404')
 def update_question(request):
@@ -184,7 +184,7 @@ def update_question(request):
 		newdata.codesnapshot=data['codesnapshot']
 		newdata.description=data['description']
 		newdata.save()
-		return HttpResponseRedirect("http://149.129.138.34/home")
+		return HttpResponseRedirect("http://34.80.215.108/home")
 	else:
 		return HttpResponse('Page Not Found 404')
 def graph_view(request):
@@ -247,7 +247,7 @@ def graph_view(request):
 				}
 				return render(request,'div/questionerror.html',values)
 		else:
-			return HttpResponseRedirect("http://149.129.138.34/index")
+			return HttpResponseRedirect("http://34.80.215.108/index")
 	else:
 		values={
 			'heading':'Authentication failed',
