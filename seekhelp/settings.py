@@ -25,7 +25,7 @@ SECRET_KEY = '8g^=70%z=og=a0da9i8%@%2o1wfz-9t5@3k=kha&bk&3gt5qg+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['149.129.138.34']
+ALLOWED_HOSTS = ['34.80.215.108','10.140.0.2']
 
 
 # Application definition
@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'seekhelp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME'  : 'dbdiv',
@@ -87,6 +87,12 @@ DATABASES = {
             'init_command':'SET character_set_connection=utf8,collation_connection=utf8_unicode_ci',
         },
 
+    }
+}"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -122,7 +128,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+Debug=True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
