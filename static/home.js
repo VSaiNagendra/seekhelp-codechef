@@ -18,5 +18,5 @@ function requestToken() {
   };
   xhttp1.open("POST", "https://api.codechef.com/oauth/token", false);
   xhttp1.setRequestHeader("content-type", "application/json");
-  xhttp1.send(JSON.stringify({"grant_type":"authorization_code","code":name.toString(),"client_id":"a420ca7d74ada05e8b29411205403ca4","client_secret":"ab9b1e3c02b7bb2f98080f26372b16f6","redirect_uri":"http://149.129.138.34/"}))
+  xhttp1.send(JSON.stringify({"grant_type":"authorization_code","code":name.toString(),"client_id":"a420ca7d74ada05e8b29411205403ca4","client_secret":"ab9b1e3c02b7bb2f98080f26372b16f6","redirect_uri":"http://34.80.215.108/"}))
 }
