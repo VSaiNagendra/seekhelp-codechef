@@ -42,7 +42,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="http://34.80.215.108/home">Home
+              <a class="nav-link" href="http://34.93.47.59/home">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -50,7 +50,7 @@
               <a class="nav-link" data-toggle="modal" data-target="#graphform" href="#">Compare</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://34.80.215.108/logout/">Logout</a>
+              <a class="nav-link" href="http://34.93.47.59/logout/">Logout</a>
             </li>
           </ul>
         </div>
@@ -104,7 +104,7 @@
           <div class="card my-4" id="reply{{forloop.counter}}">
             <h5 class="card-header">Enter here to give suggestion for {{ r.funame }} on Problem : {{r.rrid.problemcode}}</h5>
             <div class="card-body">
-              <form method="POST" action="http://34.80.215.108/home/reply_to_request/">
+              <form method="POST" action="http://34.93.47.59/home/reply_to_request/">
               {% csrf_token %}
               <input style="border: 0px solid; "  type="hidden" name="problemcode" value="{{r.rrid.problemcode}}" readonly>
               <input style="border: 0px solid; "  type="hidden" name="tuname" value="{{r.funame}}" readonly>
@@ -156,7 +156,7 @@
                     <h4 class="modal-title">Enter UserName to compare</h4>
                   </div>
                   <div class="modal-body">
-            <form class="needs-validation" method="POST" action="http://34.80.215.108/homegraph/" novalidate>
+            <form class="needs-validation" method="POST" action="http://34.93.47.59/homegraph/" novalidate>
                     {% csrf_token %}
                         <div class="form-column">
                           <div class="col-md-12 mb-6">
@@ -189,7 +189,7 @@
                     <h4 class="modal-title">Ask Question</h4>
                   </div>
                   <div class="modal-body">
-            <form class="needs-validation" method="POST" action="http://34.80.215.108/home/submit_request/" novalidate>
+            <form class="needs-validation" method="POST" action="http://34.93.47.59/home/submit_request/" novalidate>
                     {% csrf_token %}
                         <div class="form-column">
                           <div class="form-group col-md-6 mb-3">
@@ -291,13 +291,13 @@
     <script type="text/javascript">
      
             function Redirect1() {
-               window.location="http://34.80.215.108/home";
+               window.location="http://34.93.47.59/home";
              }
             function Redirect2(){
-               window.location="http://34.80.215.108/homesuggestions";
+               window.location="http://34.93.47.59/homesuggestions";
              }
             function Redirect3(){
-               window.location="http://34.80.215.108/homerequests";
+               window.location="http://34.93.47.59/homerequests";
              }
              (function() {
                 'use strict';
